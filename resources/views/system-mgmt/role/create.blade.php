@@ -41,6 +41,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Create
                                 </button>
+                                <a href="{{ route('role.index') }}" class="btn btn-warning">
+                                    Cancel
+                                </a>
                             </div>
                         </div>
                     </form>

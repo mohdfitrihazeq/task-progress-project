@@ -22,13 +22,15 @@
           <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
             <thead>
               <tr role="row">
+                <th >No.</th>
                 <th >Role Name</th>
                 <th >Action</th>
               </tr>
             </thead>
             <tbody>
-            @foreach ($roles as $role)
+            @foreach ($roles as $key => $role)
                 <tr role="row" class="odd">
+                  <td style="width:1px;">{{ $key + 1 }}</td>
                   <td>{{ $role->name }}</td>
                   <td>
                     <form class="row" method="POST" action="{{ route('role.destroy', ['id' => $role->id]) }}" onsubmit = "return confirm('Are you sure?')">
@@ -72,9 +74,25 @@
     <!-- /.content -->
   </div>
 
-<script>
+  <script>
     $(document).ready(function () {
-        $('#example2').DataTable();
+        $('#example2').DataTable({
+            dom: 'Bfrtip', // Add the export buttons to the DOM
+            buttons: [
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: [0] // Include only the first column in the export
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: [0] // Include only the first column in the export
+                    }
+                }
+            ]
+        });
     });
 </script>
 @endsection

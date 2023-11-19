@@ -31,21 +31,21 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="/"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
-        <li><a href="{{ url('employee-management') }}"><i class="fa fa-link"></i> <span>Task Progress</span></a></li>
+        <li class="active"><a href="/"><i class="nav-icon fa fa-edit text-warning"></i><span>Dashboard</span></a></li>
+        <li><a href="{{ url('employee-management') }}"><i class="nav-icon fa fa-tree text-warning"></i><span>Task Progress</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>System Management</span>
+          <a href="#"><i class="nav-icon fa fa-th text-warning"></i><span>System Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>  
           <ul class="treeview-menu">
             @if(Auth::user()->role_name == 'MSA')
-                <li><a href="{{ url('system-management/company') }}">CRUD Company</a></li>
-                <li><a href="{{ url('system-management/role') }}">CRUD Role</a></li>
+                <li><a href="{{ url('system-management/company') }}"><i class="nav-icon fa fa-circle text-info"></i>CRUD Company</a></li>
+                <li><a href="{{ url('system-management/role') }}"><i class="nav-icon fa fa-circle text-info"></i>CRUD Role</a></li>
             @endif
-            <li><a href="{{ url('system-management/project') }}">CRUD Project</a></li>
-            <li><a href="">CRUD System Login User</a></li>
+            <li><a href="{{ url('system-management/project') }}"><i class="nav-icon fa fa-circle text-info"></i>CRUD Project</a></li>
+            <li><a href=""><i class="nav-icon fa fa-circle text-info"></i>CRUD System Login User</a></li>
             
             <!-- <li><a href="{{ url('system-management/role') }}">role</a></li>
             <li><a href="{{ url('system-management/project') }}">project</a></li>
@@ -54,8 +54,8 @@
             <!-- <li><a href="{{ url('system-management/report') }}">Report</a></li> -->
           </ul>
         </li>
-        <li><a href="{{ route('user-management.index') }}"><i class="fa fa-link"></i> <span>User management</span></a></li>
-        <li><a href=""><i class="fa fa-link"></i> <span>Change Password</span></a></li>
+        <li><a href="{{ route('user-management.index') }}"><i class="nav-icon fa fa-copy text-warning"></i><span>User management</span></a></li>
+        <li><a href=""> <i class="nav-icon fa fa-table text-warning"></i><span>Change Password</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

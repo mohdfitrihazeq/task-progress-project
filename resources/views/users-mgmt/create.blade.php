@@ -117,6 +117,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Create
                                 </button>
+                                <a href="{{ route('user-management.index') }}" class="btn btn-warning">
+                                    Cancel
+                                </a>
                             </div>
                         </div>
                     </form>

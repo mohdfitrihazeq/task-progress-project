@@ -22,14 +22,16 @@
             <thead>
               <tr role="row">
                 <!-- <th width="20%" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="project: activate to sort column ascending">Project ID</th> -->
+                <th >No.</th>
                 <th >Project Name</th>
                 <th >Action</th>
               </tr>
             </thead>
             <tbody>
-            @foreach ($projects as $project)
+            @foreach ($projects as $key => $project)
                 <tr role="row" class="odd">
                   <!-- <td>{{ $project->project_code }}</td> -->
+                  <td style="width: 5px;">{{ $key + 1 }}</td>
                   <td>{{ $project->name }}</td>
                   <td>
                     <form class="row" method="POST" action="{{ route('project.destroy', ['id' => $project->id]) }}" onsubmit = "return confirm('Are you sure?')">
@@ -74,9 +76,25 @@
     <!-- /.content -->
   </div>
 
-<script>
+  <script>
     $(document).ready(function () {
-        $('#example2').DataTable();
+        $('#example2').DataTable({
+            dom: 'Bfrtip', // Add the export buttons to the DOM
+            buttons: [
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: [0,1] // Include only the first column in the export
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: [0,1] // Include only the first column in the export
+                    }
+                }
+            ]
+        });
     });
 </script>
 @endsection

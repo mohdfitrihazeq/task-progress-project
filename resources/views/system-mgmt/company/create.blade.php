@@ -28,6 +28,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Create
                                 </button>
+                                <a href="{{ route('company.index') }}" class="btn btn-warning">
+                                    Cancel
+                                </a>
                             </div>
                         </div>
                     </form>

@@ -22,6 +22,7 @@
           <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
             <thead>
               <tr role="row">
+                <th >No.</th>
                 <th >User Name</th>
                 <th >Role</th>
                 <th >Email</th>
@@ -31,8 +32,9 @@
               </tr>
             </thead>
             <tbody>
-            @foreach ($users as $user)
+            @foreach ($users as $key => $user)
                 <tr role="row" class="odd">
+                  <td style="width:5px;">{{ $key + 1 }}</td>
                   <td class="sorting_1">{{ $user->username }}</td>
                   <td class="sorting_1">{{ $user->role_name }}</td>
                   <td>{{ $user->email }}</td>
@@ -87,9 +89,25 @@
   </div>
 
   <!-- datatables  -->
-<script>
+  <script>
     $(document).ready(function () {
-        $('#example2').DataTable();
+        $('#example2').DataTable({
+            dom: 'Bfrtip', // Add the export buttons to the DOM
+            buttons: [
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: [0,1,2,3] // Include only the first column in the export
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: [0,1,2,3] // Include only the first column in the export
+                    }
+                }
+            ]
+        });
     });
 </script>
 
